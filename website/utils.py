@@ -13,4 +13,9 @@ class User(flask_login.UserMixin):
 
 
 # Our mock database.
-users = {'georgeha98@gmail.com': {'password': 'hello'}}
+users = {
+        'georgeha98@gmail.com': {'password': 'hello'},
+        'example@gmail.com': {'password': 'test'},
+
+
+        }

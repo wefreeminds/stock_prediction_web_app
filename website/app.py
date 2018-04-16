@@ -5,6 +5,8 @@ import flask_login
 import flask
 from utils import User
 import utils
+from flask import Flask, jsonify
+import os
 
 app = Flask(__name__)
 app.secret_key = 'SecretKey'  # Change this!
@@ -62,12 +64,17 @@ def login():
         return flask.abort(400)
 
         return flask.redirect(next or flask.url_for('index'))
+
     return flask.render_template('login.html', form=form)
 
 
 @app.route('/protected')
 @flask_login.login_required
 def protected():
+    try:
+        flask_login.current_user.id
+    except:
+        return 'Unauthorized access'
     return 'Logged in as: ' + flask_login.current_user.id
 
 
@@ -82,8 +89,12 @@ def user_loader(email):
 
 @login_manager.request_loader
 def request_loader(request):
-    email = request.form.get('email')
-    if email not in users:
+    try:
+        email = request.form.get('email')
+
+    except:
+        return 'Unauthorized access'
+    if email not in utils.users:
         return
 
     user = User()
@@ -101,7 +112,41 @@ def logout():
     flask_login.logout_user()
     return 'Logged out'
 
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return 'Unauthorized'
 
+
+
+@app.route('/neural_predictor', methods=['GET'])
+#@flask_login.login_required
+def neural_predictor():
+    path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
+    os.system('python' + path + '/predictor.py')
+    prediction_file = os.path.join(path,'predictions.json')
+    
+
+
+    return 'success'
+
+tasks = [
+    {
+        'id': 1,
+        'title': u'Buy groceries',
+        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
+        'done': False
+    },
+    {
+        'id': 2,
+        'title': u'Learn Python',
+        'description': u'Need to find a good Python tutorial on the web', 
+        'done': False
+    }
+]
+
+@app.route('/todo', methods=['GET'])
+def get_tasks():
+    return jsonify({'tasks': tasks})
 
 if __name__ == '__main__':
 
