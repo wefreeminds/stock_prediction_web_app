@@ -1,0 +1,1 @@
+{"stock_name:": "AAPL", "predictions": [{"day": 0, "predicted_price": "[ 315.03515625]"}, {"day": 1, "predicted_price": "[ 420.93762207]"}, {"day": 2, "predicted_price": "[ 514.75848389]"}, {"day": 3, "predicted_price": "[ 587.55688477]"}, {"day": 4, "predicted_price": "[ 643.17388916]"}], "success": false, "recommendation": "HOLD"}
