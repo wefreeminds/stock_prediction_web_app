@@ -96,6 +96,12 @@ def request_loader(request):
     return user
 
 
+@app.route('/logout')
+def logout():
+    flask_login.logout_user()
+    return 'Logged out'
+
+
 
 if __name__ == '__main__':
 
