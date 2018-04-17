@@ -7,7 +7,7 @@ Created on Tue Apr 10 18:42:01 2018
 """
 import os
 import sys
-from flask import jsonify
+import json
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from subprocess import check_output
@@ -110,12 +110,13 @@ if __name__=='__main__':
         print 'ERROR: Not all argumetns have been specified'
     else:
         stock_name = sys.argv[1]
-        days = sys.argv[2]
+        days = int(sys.argv[2])
         input_prediction = np.array([[float(sys.argv[3])]])   # current price
 
     stock_name = stock_name.upper()
 
-    model_dir = os.path.join('trained_models',stock_name)
+
+    model_dir = os.path.join('/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor/trained_models',stock_name)
     model_dir = os.path.join(model_dir,stock_name.lower())
 
     data_csv = '../data/historical_stock_price_data/hist_' + stock_name  + '.csv'
@@ -133,7 +134,7 @@ if __name__=='__main__':
     predict_length=5
     input_prediction = np.array([[175]])
 
-    predictions = predict_stock_price(model, input_prediction, predict_length)
+    predictions = predict_stock_price(model, input_prediction, days)
 
     print "predictions"
     print(remake_scaler.inverse_transform(np.array(predictions).reshape(-1, 1)))
@@ -146,7 +147,7 @@ if __name__=='__main__':
     data['predictions'] = []
     data['stock_name:'] = stock_name
 
-    i = 0
+    i = 1
     for predict in actual_predictions:
         r = {'day': i, 'predicted_price': str(predict)}
         data['predictions'].append(r)
