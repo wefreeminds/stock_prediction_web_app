@@ -8,6 +8,8 @@ import utils
 from flask import Flask, jsonify
 import os
 import json
+from flask import abort
+from flask import request
 
 app = Flask(__name__)
 app.secret_key = 'SecretKey'  # Change this!
@@ -119,6 +121,8 @@ def unauthorized_handler():
 
 
 
+## this is the starting page which makes a random prediction for AAPL stock for 2 days 
+## just to make sure that the services is up and running!
 @app.route('/neural_predictor', methods=['GET'])
 #@flask_login.login_required
 def neural_predictor():
@@ -139,24 +143,30 @@ def neural_predictor():
 
     return flask.jsonify(prediction_data)
 
-tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web', 
-        'done': False
-    }
-]
+## creating actual stock predictor
 
-@app.route('/todo', methods=['GET'])
-def get_tasks():
-    return jsonify({'tasks': tasks})
+@app.route('/neural_predictor/<stock_name>/<days>/<current_price>', methods=['GET'])
+def test(stock_name,days,current_price):
+
+    path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
+    days = int(days)
+    current_price = float(current_price)
+
+    try:
+        os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+        prediction_file = os.path.join(path,'predictions.json')
+
+        ## read the above prediction 
+        f = open(prediction_file,'r')
+        prediction_data = json.load(f)
+        f.close()
+
+        prediction_data['success'] = True
+    except:
+        abort(404)
+
+
+    return flask.jsonify(prediction_data)
 
 if __name__ == '__main__':
 
