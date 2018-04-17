@@ -7,6 +7,7 @@ from utils import User
 import utils
 from flask import Flask, jsonify
 import os
+import json
 
 app = Flask(__name__)
 app.secret_key = 'SecretKey'  # Change this!
@@ -122,12 +123,21 @@ def unauthorized_handler():
 #@flask_login.login_required
 def neural_predictor():
     path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
-    os.system('python' + path + '/predictor.py')
+    stock_name = 'AAPL'
+    days = 2
+    current_price = 350
+
+    os.system('python' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
     prediction_file = os.path.join(path,'predictions.json')
-    
+
+    ## read the above prediction 
+    f = open(prediction_file,'r')
+    prediction_data = json.load(f)
+    f.close()
+    prediction_data['success'] = True
 
 
-    return 'success'
+    return flask.jsonify(prediction_data)
 
 tasks = [
     {

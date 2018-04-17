@@ -111,7 +111,7 @@ if __name__=='__main__':
     else:
         stock_name = sys.argv[1]
         days = sys.argv[2]
-        input_prediction = np.array([[float(sys.argv[3])]])
+        input_prediction = np.array([[float(sys.argv[3])]])   # current price
 
     stock_name = stock_name.upper()
 
