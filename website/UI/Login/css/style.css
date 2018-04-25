@@ -1,0 +1,166 @@
+#wrapper {
+  background: #efefef;
+  width: relative;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+}
+
+#app {
+  width: relative;
+  height: 100%;
+  background: white;
+  margin: 10px;
+  position: relative;
+  top: 10%;
+  box-shadow: 1px 1px 10px #000;
+}
+
+#header {
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  height: 220px;
+  color: white;
+}
+
+
+#toolbar i {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 15px 25px;
+}
+
+#hero {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#hero > p {
+  color: #d1d1d0;
+  font-weight: bold;
+}
+
+
+#info {
+  margin-top: 55px;
+  padding-left: 30px;
+  margin-right: 10;
+}
+
+.left-info {
+  border-right: 1px solid #ccc;
+  text-align: center;
+}
+
+.right-info {
+  border-left: 1px;
+  text-align: center;
+}
+
+.info-title {
+  color: #d1d1d0;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.info-details {
+  font-size: 23px;
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+#body-title {
+  background: #eaeaea;
+  color: #aeafb5;
+  font-size: 20px;
+  padding: 25px;
+}
+
+ul > li,
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.single-stats {
+  border-bottom: 2px solid #eae1e1;
+  padding: 25px 25px 25px;
+}
+.single-stats > .row > div {
+  position: relative;
+}
+.single-stats h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color:black;
+}
+.single-stats p {
+  font-size: 15px;
+  color: #0ba360;
+  font-weight: bold;
+}
+
+.fa-line-chart {
+  color: #3cba92;
+  font-size: 35px;
+  position: center;
+  top: 25px;
+}
+
+button {
+    background-color: #ggg;
+    color: white;
+    textweight: bold;
+    padding: 20px 20px;
+    margin: 15px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align:center;
+    border-radius: 10px;
+}
+
+#button1{
+  background-color:#0ba360;
+}
+
+#left{
+     float:left;
+     width:50%;
+
+  }
+  
+#right{
+  float: right;
+  width:36%;
+  border-color:black;
+}
+.footer_resize {
+	margin:0 auto;
+	padding:20px 0;
+	width:930px;
+}
+.footer p {
+	margin:0;
+	padding:4px 0;
+  font-weight:bold;
+	line-height:normal;
+}
+.footer a {
+	color:#959595;
+	padding:inherit;
+	
+}
+.footer a:hover {
+	text-decoration:none;
+}
+.footer .lf {
+	float:left;
+}
+.footer .rf {
+	float:right;
+}
+ 
