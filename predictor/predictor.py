@@ -21,6 +21,7 @@ from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 from numpy import newaxis
 from pandas import read_csv
+import real_time
 
 
 def Create_Min_Max_Scaler(data_csv,stock_name):
@@ -144,6 +145,7 @@ if __name__=='__main__':
 
     stock_name = 'AAPL'
     days = 3
+    realtime_pred = True
 
     if len(sys.argv) < 2:
         print 'Usaga: Not all argumetns have been specified'
@@ -151,6 +153,12 @@ if __name__=='__main__':
         stock_name = sys.argv[1]
         days = int(sys.argv[2])
         input_prediction = np.array([[float(sys.argv[3])]])   # current price
+
+    if len(sys.argv)==4:
+        if sys.argv[4] == int(1):
+            realtime_pred = True
+
+
 
     stock_name = stock_name.upper()
 
@@ -190,6 +198,12 @@ if __name__=='__main__':
 
 
     i = 1
+
+    time_or_day = 'day'
+
+    if realtime_pred:
+        time_or_day = 'minute'
+
     for predict in actual_predictions:
         r = {'day': i, 'predicted_price': str(predict[0])}
         data['predictions'].append(r)
@@ -202,8 +216,10 @@ if __name__=='__main__':
     df = pd.DataFrame(predictions_to_recommend) ## new predictions in dataframe
 
 
-
-    recomended_action  = recomend_buy_sell_hold(days)
+    if realtime_pred:
+        real_time.HFT_RSI_RECOM(days=days,stock_name=stock_name)
+    else:
+        recomended_action  = recomend_buy_sell_hold(days)
 
     data['recommendation'] =  recomended_action
 
