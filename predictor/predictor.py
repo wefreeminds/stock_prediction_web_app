@@ -20,6 +20,7 @@ import time #helper libraries
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 from numpy import newaxis
+from pandas import read_csv
 
 
 def Create_Min_Max_Scaler(data_csv,stock_name):
@@ -92,11 +93,49 @@ def create_dataset(dataset, look_back=1):
 
 
 
-def recomend_buy_sell_hold():
+def recomend_buy_sell_hold(days):   ## HISTORICAL
 
     recomendation = "HOLD"   #TODO: implement the indicator
+    past_data = read_csv(data_csv)
+    past_data = past_data['close']
+    past_data.append(df, ignore_index=True)
+    past_data = past_data.tail(30)
+
+
+    ema_26_days = pd.ewma(past_data, span=26)
+    ema_12_days = pd.ewma(past_data, span=12)
+
+    MACD = ema_12_days -  ema_26_days
+
+
+
+    ##plt.plot(MACD)
+
+    MACD = MACD.tolist()
+
+    if days < 5:
+        days = 5
+
+    MACD = MACD[-6:]
+
+    start = MACD[0]
+
+    # if start >0 and we find a price less than zero recomend SELL
+    if start>=0:
+        for price in MACD:
+            if price < 0:
+                recomendation = "SELL"
+
+    else:
+        for price in MACD:
+            if price>=0:
+                recomendation = "BUY"
+
 
     return recomendation
+
+
+
 
 
 
@@ -104,10 +143,10 @@ if __name__=='__main__':
 
 
     stock_name = 'AAPL'
-    days = 1
+    days = 3
 
     if len(sys.argv) < 2:
-        print 'ERROR: Not all argumetns have been specified'
+        print 'Usaga: Not all argumetns have been specified'
     else:
         stock_name = sys.argv[1]
         days = int(sys.argv[2])
@@ -147,15 +186,26 @@ if __name__=='__main__':
     data['predictions'] = []
     data['stock_name:'] = stock_name
 
+    predictions_to_recommend = []
+
+
     i = 1
     for predict in actual_predictions:
-        r = {'day': i, 'predicted_price': str(predict)}
+        r = {'day': i, 'predicted_price': str(predict[0])}
         data['predictions'].append(r)
+        predictions_to_recommend.append(predict[0])
+
+
         i += 1
 
-    recomended_action  = recomend_buy_sell_hold()
+    predictions_to_recommend = np.asarray(predictions_to_recommend).reshape(len(predictions_to_recommend),1)
+    df = pd.DataFrame(predictions_to_recommend) ## new predictions in dataframe
 
-    data['recommendation'] = recomended_action
+
+
+    recomended_action  = recomend_buy_sell_hold(days)
+
+    data['recommendation'] =  recomended_action
 
     f = open(predictions_file,'w')
     json.dump(data, f)
