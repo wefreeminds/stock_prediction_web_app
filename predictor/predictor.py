@@ -224,7 +224,7 @@ if __name__=='__main__':
 
 
     if realtime_pred:
-        real_time.HFT_RSI_RECOM(days=days,stock_name=stock_name)
+        recomended_action = real_time.HFT_RSI_RECOM(days=days,stock_name=stock_name)
     else:
         recomended_action  = recomend_buy_sell_hold(days)
 
