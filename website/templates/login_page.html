@@ -93,13 +93,14 @@
     
   <div class="col-xs-6 ">
     <div class="container ">
-        <label for="uname "><b>Username</b></label>
-        <input type="text " placeholder="Username " name="uname " required>
+        <form action='login' method='POST'>
+        <label for="uname "><b>email</b></label>
+        <input type="text " placeholder="Email" name="email" id='email'required>
 
         <label for="psw "><b>Password</b></label>
-        <input type="password " placeholder="********* " name="psw " required>
-
-        <button id = "button1 " type="submit " class="btn btn-primary btn-lg active " >Sign In</button>
+        <input type="password " placeholder="********* " name="password" id='password' required>
+        <input type='submit' name='submit' class="btn btn-primary btn-lg active " value='Sign in!'  />
+        </form>
       </div>
    </div>
                   
