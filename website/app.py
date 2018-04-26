@@ -126,7 +126,11 @@ def unauthorized_handler():
 @app.route('/neural_predictor', methods=['GET'])
 #@flask_login.login_required
 def neural_predictor():
-    path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
+    app_dir = os.path.dirname(os.path.realpath(__file__))
+    repo_dir = os.path.dirname(app_dir)
+    path = os.path.join(repo_dir,'predictor')
+
+    #path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
     stock_name = 'AAPL'
     days = 2
     current_price = 350
@@ -148,7 +152,11 @@ def neural_predictor():
 @app.route('/neural_predictor/<stock_name>/<days>/<current_price>', methods=['GET'])
 def test(stock_name,days,current_price):
 
-    path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
+    #path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
+    app_dir = os.path.dirname(os.path.realpath(__file__))
+    repo_dir = os.path.dirname(app_dir)
+    path = os.path.join(repo_dir,'predictor')
+
     days = int(days)
     current_price = float(current_price)
 

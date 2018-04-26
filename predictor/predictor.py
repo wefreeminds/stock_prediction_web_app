@@ -145,10 +145,10 @@ if __name__=='__main__':
 
     stock_name = 'AAPL'
     days = 3
-    realtime_pred = True
+    realtime_pred = False
 
     if len(sys.argv) < 2:
-        print 'Usaga: Not all argumetns have been specified'
+        print 'Usaga: Not all arguments have been specified'
     else:
         stock_name = sys.argv[1]
         days = int(sys.argv[2])
@@ -163,7 +163,11 @@ if __name__=='__main__':
     stock_name = stock_name.upper()
 
 
-    model_dir = os.path.join('/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor/trained_models',stock_name)
+    predictor_dir = os.path.dirname(os.path.realpath(__file__))
+    trained_models_dir = os.path.join(predictor_dir,'trained_models')
+    model_dir = os.path.join(trained_models_dir,stock_name)
+
+
     model_dir = os.path.join(model_dir,stock_name.lower())
 
     data_csv = '../data/historical_stock_price_data/hist_' + stock_name  + '.csv'
@@ -188,7 +192,10 @@ if __name__=='__main__':
     actual_predictions = remake_scaler.inverse_transform(np.array(predictions).reshape(-1, 1))
 
     ## savigin predictions
-    predictions_file = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor/predictions.json'
+    predictions_file = os.path.join(predictor_dir,'predictions.json')
+
+
+    #predictions_file = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor/predictions.json'
 
     data = {"success": False}
     data['predictions'] = []
@@ -205,7 +212,7 @@ if __name__=='__main__':
         time_or_day = 'minute'
 
     for predict in actual_predictions:
-        r = {'day': i, 'predicted_price': str(predict[0])}
+        r = {time_or_day: i, 'predicted_price': str(predict[0])}
         data['predictions'].append(r)
         predictions_to_recommend.append(predict[0])
 
