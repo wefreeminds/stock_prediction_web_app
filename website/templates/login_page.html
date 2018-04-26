@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>A Pen by  Tahiya</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Ubuntu:300'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html xmlns="http://www.w3.org/1999/xhtml" style="background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id=" wrapper ">
+  <div id="app ">
+<head>
+
+<title>StockGuru</title>
+<meta http-equiv="Content-Type " content="text/html; charset=UTF-8 " />
+
+     <link href="{{url_for('static', filename='realtime/css/style.css')}}">   
+    <!-- Bootstrap -->
+    <link rel="stylesheet " type="text/css "  href="{{url_for('static', filename='realtime/css/style.css')}}">
+    <link rel="stylesheet " type="text/css " href="{{url_for('static', filename='realtime/fonts/font-awesome/css/font-awesome.css')}}">
+
+    <link rel="stylesheet " type="text/css "  href="{{url_for('static', filename='realtime/css/menusearch.css')}}">
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet " type="text/css "  href="{{url_for('static', filename='realtime/css/style.css')}}">  
+    <link rel="stylesheet " type="text/css "  href="{{url_for('static', filename='realtime/css/responsive.css')}}"> 
+
+    <script type="text/javascript " src="{{url_for('static', filename='realtime/js/modernizr.custom.js')}}"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,700,100,800,900,400,200,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+
+
+
+    <script type="text/javascript " src="{{url_for('static', filename='realtime/js/jquery.1.11.1.js')}}"></script>
+
+    <script type="text/javascript " src="{{url_for('static', filename='realtime/js/jquery-1.10.2.min.js')}}"></script>
+
+    <script src="{{url_for('static', filename='realtime/js/handlebars.js')}}"></script>
+    <script type="text/javascript " src="http://code.jquery.com/jquery-migrate-1.2.1.min.js "></script>
+
+
+
+
+
+</head>
+
+<body >
+
+
+ <!--   SEARCH BAR -->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js "></script>
+
+    <script type="text/javascript " src="{{url_for('static', filename='realtime/js/jquery.1.11.1.js')}}"></script>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript " src="{{url_for('static', filename='realtime/js/bootstrap.js')}}"></script>
+
+    <!-- Javascripts
+    ================================================== -->
+     <script src="{{url_for('static', filename='realtime/js/typeahead.js')}}"></script>
+      <script src="{{url_for('static', filename='realtime/js/search.js')}}"></script>
+
+
+ <div class="header ">
+   <div class="col-xs-6 ">
+    <div class="logo ">
+      <h1><a href="# "><span>Stock</span>Guru<h2> Buy. Sell. Hold. It's that simple!</h2></a></h1>
+    </div
+       </div>
+                       
+         
+    
+  <div class="col-xs-6 ">
+    <div class="container ">
+        <label for="uname "><b>Username</b></label>
+        <input type="text " placeholder="Username " name="uname " required>
+
+        <label for="psw "><b>Password</b></label>
+        <input type="password " placeholder="********* " name="psw " required>
+
+        <button id = "button1 " type="submit " class="btn btn-primary btn-lg active " >Sign In</button>
+      </div>
+   </div>
+                  
+ 
+    </div>
+    <div class="clr "></div>
+  </div>
+   
+<h2 align="center " font-color="#fffff "> Live Market Update </h2>
+                                        
+<!-- TradingView Widget BEGIN -->
+<script type="text/javascript " src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js "></script>
+<script type="text/javascript ">
+new TradingView.widget({
+  "width ": 960,
+  "height ": 400,
+  "symbol ": "AABA ",
+  "interval ": "D ",
+  "timezone ": "Etc/UT ",
+  "theme ": "Black ",
+  "style ": "2 ",
+  "locale ": "en ",
+  "toolbar_bg ": "#ffffff ",
+  "enable_publishing ": false,
+  "allow_symbol_change ": true,
+  "hideideas ": false
+});
+</script>
+<!-- TradingView Widget END -->
+              
+    <br><br>
+      <div class="about ">
+        <center>
+        <h2><span>About Us</span></h2>
+        <p>The days of panick with stock market is here. All you have to do is onen an account and select the companies you want to follow. We do the market analysis for you in real-time to provide you prediction for the market.
+        </p>
+        </center>
+       
+      </div>
+     </div>
+      <div class="clr "></div>
+    </div>
+  </div>
+  <div class="footer ">
+    <div class="footer_resize ">
+      <p class="lf ">&copy; Copyright <a href="# ">StockGuru Inc.</a>.</p>
+      
+      <div class="clr "></div>
+    </div>
+  </div>
+ </div>
+</div> 
+  
+</body>
+</html>
+  
+  
+
+</body>
+
+</html>
