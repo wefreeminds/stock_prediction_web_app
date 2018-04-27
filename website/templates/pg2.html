@@ -1,5 +1,8 @@
 <html>
-  <head>
+<head>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
       <title> Stock Predictions </title>
         </head>
           <body>
@@ -9,18 +12,72 @@
                     background-color:  #254117;
                         font-family: 'Gugi', cursive;
                             }<font color="white">
-                                </style><div>
-                                        <h2><font color="white">Historical Data Plot</font><center><font color="white">Prediction Plot</font></center></h2>
-                                              <div id="historical"><!-- Plotly chart will be drawn inside this DIV --></div>
-                                            <img src={{ figure }} alt="Image Placeholder" height="100"><center><img src={{ figure }} alt="Image Placeholder" height="100"></center>
-                                            <h2><font color="white">Realtime Data Plot</font><h2><center><font color="white">Stock Statistics</font></center></h2>
 
-                                                <div id="realtime"><!-- Plotly chart will be drawn inside this DIV --></div>
+                                
+                                </style>
+                                    <div class='floatleft' style='float:left;width:50%;'>
+                                            <h2><font color="white">Historical Data Plot</font></h2>
+                                                    <div id='historical'><!-- Plot --></div>
+                                                        <h2><font color="white">Prediction Plot</font></h2>
+                                                                <div id='prediction'><!-- Plot --></div>
+                                                                    </div>
+                                                                        <div class='right' style='float:right;width:50%;'>
+                                                                                <h2><font color="white">Realtime Data Plot</font></h2>
+                                                                                <div id='realtime'><!-- Plot --></div>
+                                                                                            <h2><font color="white">Stock Statistics</font></h2>
+                                                                                                    <div id='statistics'></div>
+                                                                                                        </div>
+                                                                                                            </font>
 
-                                                        <img src={{ figure }} alt="Image Placeholder" height="100"><center><img src={{ figure }} alt="Image Placeholder" height="100"></center>
-                                                            </font>
-                                                        </h2>
-                                                    </div>
-                                                        
-                                                      </body>
-                                                      </html>
+                                                                                                        </div>
+                                                                                                            
+                      <script type="text/javascript">
+    
+
+                
+      var trace1={
+
+                x:{{ date_hlist |tojson|safe }},
+                        y:{{ prices_hlist |tojson|safe }},
+                              mode:'lines',
+                                    name:'historical'
+                                             };
+/*
+      var trace2 = {
+               x: {{ date_rlist |tojson|safe }},
+                       y: {{ price_rlist |tojson|safe }},
+                            mode: 'lines',
+                                 name: 'realtime'
+      };
+
+      var trace3 = {
+               x: {{ predi_d |tojson|safe }},
+                       y: {{ prediction |tojson|safe }},
+                            mode: 'lines',
+                                 name: 'prediction'
+      };
+
+*/
+        var data = [ trace1];
+                var layout={
+                            title: 'historical'
+                                               }
+        Plotly.newPlot('historical', data, layout);
+/*
+                var data = [ trace2];
+                        var layout={
+                                    title: 'realtime'
+                                                       }
+        Plotly.newPlot('realtime',data,layout);
+
+
+                var data = [ trace3];
+                        var layout={
+                                    title: 'prediction'
+                                                       }
+        Plotly.newPlot('prediction',data,layout);
+
+*/
+          </script>
+                                                                                                          </body>
+                                                                                                          </html>

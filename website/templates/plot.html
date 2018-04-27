@@ -17,18 +17,27 @@
     
       var trace1={
 
-                x:{{ date_list |tojson|safe }},
-                        y:{{ prices_list |tojson|safe }},
+                x:{{ date_hlist |tojson|safe }},
+                        y:{{ prices_hlist |tojson|safe }},
                               mode:'lines',
                                     name:'historical'
                                              };
 
       var trace2 = {
-               x: {{ real_date |tojson|safe }},
-                       y: {{ real_price |tojson|safe }},
+               x: {{ date_rlist |tojson|safe }},
+                       y: {{ price_rlist |tojson|safe }},
                             mode: 'lines',
                                  name: 'realtime'
-                                          };
+      };
+
+      var trace3 = {
+               x: {{ predi_d |tojson|safe }},
+                       y: {{ prediction |tojson|safe }},
+                            mode: 'lines',
+                                 name: 'prediction'
+      };
+
+
         var data = [ trace1];
                 var layout={
                             title: 'historical'
@@ -42,6 +51,11 @@
         Plotly.newPlot('realtime',data,layout);
 
 
+                var data = [ trace3];
+                        var layout={
+                                    title: 'prediction'
+                                                       }
+        Plotly.newPlot('prediction',data,layout);
                 
 
 

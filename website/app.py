@@ -115,7 +115,7 @@ def predictions(stock_name):
     #current_price = 350
 
     #os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
-    os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+    #os.system('python ' + path + '/predictor.py  %s %d ' % (stock_name,days))
     prediction_file = os.path.join(path,'predictions.json')
 
     ## read the above prediction 
@@ -144,7 +144,9 @@ def predictions(stock_name):
     min_ave = qu.query5(stock_name)
 
 
-    return render_template('pg2.html', ave = average, maxi=maximum, mini=minimum, cur=current, mina=min_ave, date_hlist=date_history, prices_hlist=prices_history, date_rlist=data_real, prices_rlist=prices_real, predi_d=day_prediction, prediction= price_prediction , news = news.get_news(stock_name))
+    return render_template('pg2.html', prices_hlist=prices_history, date_hlist= date_history)
+            
+            #ave = average, maxi=maximum, mini=minimum, cur=current, mina=min_ave, date_hlist=date_history, prices_hlist=prices_history, date_rlist=date_real, prices_rlist=prices_real, predi_d=day_prediction, prediction= price_prediction , news = news.get_news(stock_name))
 
 #render_template('predictions.html',prediction_image=prediction_image)                                  
 
