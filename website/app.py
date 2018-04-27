@@ -144,6 +144,10 @@ def request_loader(request):
 
     return user
 
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
 
 @app.route('/logout')
 def logout():
