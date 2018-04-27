@@ -152,10 +152,10 @@ if __name__=='__main__':
     else:
         stock_name = sys.argv[1]
         days = int(sys.argv[2])
-        input_prediction = np.array([[float(sys.argv[3])]])   # current price
+        #input_prediction = np.array([[float(sys.argv[3])]])   # current price
 
-    if len(sys.argv)==5:
-        if sys.argv[4] == int(1):
+    if len(sys.argv)==4:
+        if sys.argv[3] == int(1):
             realtime_pred = True
 
 
@@ -183,7 +183,9 @@ if __name__=='__main__':
 
 
     predict_length=5
-    input_prediction = np.array([[175]])
+
+    last_price_data = read_csv(data_csv)
+    input_prediction = np.array([[float(last_price_data.tail(1)['close'].tolist()[0])]])
 
     predictions = predict_stock_price(model, input_prediction, days)
 
