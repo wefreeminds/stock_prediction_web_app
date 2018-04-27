@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+body {
+    background-color:  #254117;
+    font-family: 'Gugi', cursive;
+
+    }
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.active, .accordion:hover {
+    background-color: #57E964;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #64E986;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: #90EE90;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+
+<h2><font color="white">Frequently Asked Questions</font></h2>
+<p><font color="white">To bring out the StockGuru® in you </font></p>
+<button class="accordion">WHY WOULD I CHOOSE STOCKS?</button>
+<div class="panel">
+  <p>Stocks are one of the most effective tools for building wealth, as stocks are a share of ownership of a company. You thus have great potential to receive monetary benefits when you own stock shares. Owning stocks of fundamentally strong companies simply lets your money work harder for you since they appreciate in value over a period of time while also offering rich dividends on a periodic basis.</p>
+</div>
+
+<button class="accordion">WHAT INSTRUMENTS ARE TRADED IN THE STOCK MARKETS?</button>
+<div class="panel">
+  <p>There are various types of instruments traded in the stock market. They include shares, mutual funds, IPOs, futures and options.</p>
+</div>
+
+<button class="accordion">WHERE DO I BUY STOCKS?</button>
+<div class="panel">
+  <p>Stock trading happens on stock exchanges. However, you cannot buy directly at the exchange. To buy stocks, you need to find a suitable broker who will understand your needs and buy stocks on your behalf. You can think of them as agents who will conduct transactions for you without actually owning any of the securities themselves. In exchange for facilitating or executing a trade, brokers will charge you a commission.</p>
+</div>
+
+<button class="accordion">WHAT IS THE MARKET CAP OF NYSE</button>
+<div class="panel">
+  <p>It is by far the world's largest stock exchange by market capitalization of its listed companies at US$21.3 trillion as of June 2017. The average daily trading value was approximately US$169 billion in 2013.</p>
+</div>
+
+<button class="accordion">WHAT IS A 'TREND'</button>
+<div class="panel">
+  <p>The trend is the general direction of a market or of the price of a security. In technical analysis, trends are identified by trend lines that connect a series of highs or lows. Most traders trade in the same direction as a trend, while contrarians seek to identify reversals. Trends can also apply to interest rates, bond yields, and other markets where they're characterized by a long-term movement in price or volume.</p>
+</div>
+
+<button class="accordion">WHAT IS 'TECHNICAL ANALYSIS'</button>
+<div class="panel">
+  <p>Technical analysis is the interpretation of the price action of a company's underlying stock (or any tradable financial instrument). It utilizes various charts and statistical indicators to determine price support/resistance, range and trends.</p>
+</div>
+
+<button class="accordion">WHAT ARE 'MARKET INDICATORS'</button>
+<div class="panel">
+  <p>Market indicators are a subset of technical indicators used to predict the direction of major financial indexes or groups of securities. Most market indicators are created by analyzing the number of companies that have reached new highs relative to the number that created new lows, known as market breadth, since it shows where the overall trend is headed.</p>
+</div>
+
+<button class="accordion">WHAT ARE THE TRADING HOURS IN THE US OF A</button>
+<div class="panel">
+  <p>The New York Stock Exchange (NYSE) is based in New York City. The NYSE is one of the largest stock exchanges in the world, and it is a public entity. As of 2018, the NYSE has normal trading hours from 9:30 a.m. to 4 p.m. local time, unless there's an early close due to a holiday.
+
+The Nasdaq is an American stock exchange that serves as a global electronic marketplace for securities trading. Pre-market trading hours are from 4 a.m. to 9:30 a.m. local time, and after-hours trading extends from 4 p.m. to 8 p.m. The normal trading hours begin at 9:30 a.m. and end at 4 p.m.</p>
+</div>
+
+<button class="accordion">WHAT ARE TICKR SYMBOLS</button>
+<div class="panel">
+  <p>Stock symbols are the most recognized type of ticker symbol. Stocks listed and traded on U.S. exchanges such as the New York Stock Exchange (NYSE) have ticker symbols with up to three letters. Nasdaq-listed stocks have four-letter ticker symbols.
+
+Ticker symbols for options are structured to represent the underlying stock ticker they are based on and also their expiration date and contract type (either a put or a call option). Mutual fund ticker symbols are usually alphanumeric and end with the letter X to differentiate them from stock symbols.
+
+The ticker symbol provides a unique identifier by which individual securities can be researched and traded. While the ticker symbol is most commonly an abbreviation of the associated company’s name, it is not a requirement; availability may prevent a company from selecting a symbol that easily translates to its name.</p>
+</div>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>

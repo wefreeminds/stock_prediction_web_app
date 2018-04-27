@@ -96,12 +96,12 @@ def predictions(stock_name):
     repo_dir = os.path.dirname(app_dir)
     path = os.path.join(repo_dir,'predictor')
 
-    #stock_name = str(stock_name)
+    stock_name = str(stock_name)
     print stock_name
-    days = 5
+    days = 3
     current_price = 350
 
-    #os.system('pythonw ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+    os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
     prediction_file = os.path.join(path,'predictions.json')
 
     ## read the above prediction 
@@ -111,7 +111,7 @@ def predictions(stock_name):
     prediction_image = utils.plot_predictions(prediction_data)
 
 
-    return render_template('predictions.html',prediction_image=prediction_image)                                  #flask.jsonify(prediction_data)
+    return render_template('predictions.html',prediction_image=prediction_image)                                  
 
 
 
@@ -143,6 +143,10 @@ def request_loader(request):
     user.is_authenticated = request.form['password'] == users[email]['password']
 
     return user
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
 
 
 @app.route('/logout')
@@ -217,4 +221,4 @@ if __name__ == '__main__':
 #    login_manager = flask_login.LoginManager()
 #    login_manager.init_app(app)
 
-    app.run(debug=True)
+    app.run(debug=True,host= '0.0.0.0')
