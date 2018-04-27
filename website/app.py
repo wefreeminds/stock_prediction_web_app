@@ -19,6 +19,7 @@ import query5 as qu
 import plotly
 import pandas as pd
 import csv
+import news
 
 app = Flask(__name__)
 app.secret_key = 'SecretKey'  # Change this!
@@ -110,9 +111,10 @@ def predictions(stock_name):
 
     stock_name = str(stock_name)
     print stock_name
-    days = 3
-    current_price = 350
+    days = 15
+    #current_price = 350
 
+    #os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
     os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
     prediction_file = os.path.join(path,'predictions.json')
 
@@ -142,7 +144,7 @@ def predictions(stock_name):
     min_ave = qu.query5(stock_name)
 
 
-    return render_template('pg2.html', ave = average, maxi=maximum, mini=minimum, cur=current, mina=min_ave, date_hlist=date_history, prices_hlist=prices_history, date_rlist=data_real, prices_rlist=prices_real, predi_d=day_prediction, prediction= price_prediction )
+    return render_template('pg2.html', ave = average, maxi=maximum, mini=minimum, cur=current, mina=min_ave, date_hlist=date_history, prices_hlist=prices_history, date_rlist=data_real, prices_rlist=prices_real, predi_d=day_prediction, prediction= price_prediction , news = news.get_news(stock_name))
 
 #render_template('predictions.html',prediction_image=prediction_image)                                  
 
@@ -205,9 +207,8 @@ def neural_predictor():
     #path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
     stock_name = 'AAPL'
     days = 2
-    current_price = 350
 
-    os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+    os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days))
     prediction_file = os.path.join(path,'predictions.json')
 
     ## read the above prediction 
@@ -221,10 +222,9 @@ def neural_predictor():
 
 ## creating actual stock predictor
 
-@app.route('/neural_predictor/<stock_name>/<days>/<current_price>', methods=['GET'])
+@app.route('/neural_predictor/<stock_name>/<days>', methods=['GET'])
 def test(stock_name,days,current_price):
 
-    #path = '/Users/giorgoschantzialexiou/Repositories/stock_prediction_web_app/predictor'
     app_dir = os.path.dirname(os.path.realpath(__file__))
     repo_dir = os.path.dirname(app_dir)
     path = os.path.join(repo_dir,'predictor')
@@ -233,7 +233,7 @@ def test(stock_name,days,current_price):
     current_price = float(current_price)
 
     try:
-        os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+        os.system('python ' + path + '/predictor.py  %s %d ' % (stock_name,days))
         prediction_file = os.path.join(path,'predictions.json')
 
         ## read the above prediction 
@@ -250,8 +250,5 @@ def test(stock_name,days,current_price):
 
 if __name__ == '__main__':
 
-#    global login_manager
-#    login_manager = flask_login.LoginManager()
-#    login_manager.init_app(app)
 
     app.run(debug=True,host= '0.0.0.0')
