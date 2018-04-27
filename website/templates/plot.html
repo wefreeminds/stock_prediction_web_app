@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <h1>
+            ploting the graph
+        </h1>
+        <body>
+          <div id="historical"><!-- Plotly chart will be drawn inside this DIV --></div>
+                <div id="realtime"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+
+
+                      <script type="text/javascript">
+    
+      var trace1={
+
+                x:{{ date_list |tojson|safe }},
+                        y:{{ prices_list |tojson|safe }},
+                              mode:'lines',
+                                    name:'historical'
+                                             };
+
+      var trace2 = {
+               x: {{ real_date |tojson|safe }},
+                       y: {{ real_price |tojson|safe }},
+                            mode: 'lines',
+                                 name: 'realtime'
+                                          };
+        var data = [ trace1];
+                var layout={
+                            title: 'historical'
+                                               }
+        Plotly.newPlot('historical', data, layout);
+
+                var data = [ trace2];
+                        var layout={
+                                    title: 'realtime'
+                                                       }
+        Plotly.newPlot('realtime',data,layout);
+
+
+                
+
+
+          </script>
+          </body>
+          </html>

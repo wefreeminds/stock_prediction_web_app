@@ -11,6 +11,15 @@ import json
 from flask import abort
 from flask import request
 
+import amax as mx
+import amin as mn
+import average as av
+import query1 as que
+import query5 as qu
+import plotly
+import pandas as pd
+import csv
+
 app = Flask(__name__)
 app.secret_key = 'SecretKey'  # Change this!
 
@@ -111,10 +120,31 @@ def predictions(stock_name):
     f = open(prediction_file,'r')
     prediction_data = json.load(f)
     f.close()
-    prediction_image = utils.plot_predictions(prediction_data)
+    prediction_tuple = utils.plot_predictions(prediction_data)
+    day_prediction = prediction_tuple[0]
+    price_prediction = prediction_tuple[1]
+    recom_prediction = prediction_tuple[2]
+
+    ### real data
+    data_real = pd.read_csv(str(stock_name) + '.csv')
+    date_real = data_real['date'].tolist()
+    prices_real = data_real['close'].tolist()
+
+    #history data
+    data_history = pd.read_csv('historical_' + str(stock_name) + '.csv')
+    date_history = data_history['date'].tolist()
+    prices_history = data_history['close'].tolist()
+
+    maximum = mx.maximum(stock_name)
+    minimum = mn.minimum(stock_name)
+    average = av.average(stock_name)
+    current = que.current(stock_name)
+    min_ave = qu.query5(stock_name)
 
 
-    return render_template('predictions.html',prediction_image=prediction_image)                                  
+    return render_template('pg2.html', ave = average, maxi=maximum, mini=minimum, cur=current, mina=min_ave, date_hlist=date_history, prices_hlist=prices_history, date_rlist=data_real, prices_rlist=prices_real, predi_d=day_prediction, prediction= price_prediction )
+
+#render_template('predictions.html',prediction_image=prediction_image)                                  
 
 
 

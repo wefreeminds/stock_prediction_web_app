@@ -39,13 +39,13 @@ def plot_predictions(data):
     for value in predictions:
         y_axis.append(value['predicted_price'])
 
-    fig = plt.figure()
+  #  fig = plt.figure()
 
-    plt.title('Stock prediction')
-    plt.plot(x_axis,y_axis)
-    plt.ylabel('Stock Price in  $')
-    plt.grid(True)
-    fig.savefig('static/stock_predictions.png')
+ #   plt.title('Stock prediction')
+ #   plt.plot(x_axis,y_axis)
+ #   plt.ylabel('Stock Price in  $')
+ #   plt.grid(True)
+#    fig.savefig('static/stock_predictions.png')
 
    # plt.show()
-    return 'stock_predictions.png'
+    return (x_axis,y_axis,'BUY') 
