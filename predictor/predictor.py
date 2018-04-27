@@ -154,7 +154,7 @@ if __name__=='__main__':
         days = int(sys.argv[2])
         input_prediction = np.array([[float(sys.argv[3])]])   # current price
 
-    if len(sys.argv)==4:
+    if len(sys.argv)==5:
         if sys.argv[4] == int(1):
             realtime_pred = True
 

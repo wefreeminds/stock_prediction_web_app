@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Stock Guru</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Ubuntu:300'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div id="wrapper">
+  <div id="app">
+    
+<div id="header">
+      
+      <div id="hero">
+        <h1>Welcome!</h1>
+        <p>Ready for your stock updates?</p>
+      </div>
+
+    
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          
+          <div class="navbar-header">
+            <a class="navbar-brand" font-weight="bold" ref="login">StockGuru</a>
+          </div>
+          
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+		    <li><a href="faq">FAQ</a></li>
+            <li><a href="logout">Sign Out</a></li>
+          </ul>
+          
+        </div>
+      </nav>
+ </div>    
+ 
+<div class ="col-xs-6"
+<div id="left">       
+ <!-- TradingView Widget BEGIN -->
+ <script type="text/javascript " src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js "></script>
+ <script type="text/javascript ">
+new TradingView.widget({
+  "width ": 960,
+  "height ": 400,
+  "symbol ": "AABA ",
+  "interval ": "D ",
+  "timezone ": "Etc/UT ",
+  "theme ": "Black ",
+  "style ": "2 ",
+  "locale ": "en ",
+  "toolbar_bg ": "#ffffff ",
+  "enable_publishing ": false,
+  "allow_symbol_change ": true,
+  "hideideas ": false
+});
+</script>
+<!-- TradingView Widget END -->
+
+ </div>   
+ </div>
+      
+<div class ="col-xs-6"  
+  <div id="right">
+        <div id="body-title">
+          WATCHLIST
+        </div>
+
+        <div id="stats">
+          
+          <ul>
+            <li class="single-stats">
+              <div class="row">
+                
+                <div class="col-xs-4">
+                  <center>
+                    <h2>AABA</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" onclick="location.href = 'predictions/AABA';" type="submit" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>AAPL</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i></center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>      
+                    <button id="button1" onclick="location.href = 'predictions/AAPL';" type="submit" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>AMZN</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" onclick="location.href = 'predictions/AMZN';"  type="submit" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>FB</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/FB';" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>GOOG</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/GOOG';" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>GS</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/GS';" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>NDAQ</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart"  style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/NDAQ';"  class="btn btn-primary btn-lg active" style="size=100">Select  stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>NVDA</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/NVDA';"  class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>PETX</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/PETX';" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="single-stats">
+              <div class="row">
+                <div class="col-xs-4">
+                  <center>
+                    <h2>TXN</h2>
+                </div>
+
+                <div class="col-xs-4">
+                  <h2></h2>
+                  <center> <i class="fa fa-line-chart" style="font-size:40px; color:#3cba92"></i> </center>
+                </div>
+
+                <div class="col-xs-4 price-details">
+                  <center>
+                    <button id="button1" type="submit" onclick="location.href = 'predictions/TXN';" class="btn btn-primary btn-lg active" style="size=100">Select stock</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        
+         </div>    
+      </div>
+    </div>   
+      
+              
+              
+    </div>
+  </div>
+  
+  
+
+</body>
+
+</html>

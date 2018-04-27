@@ -16,6 +16,7 @@ class User(flask_login.UserMixin):
 users = {
         'georgeha98@gmail.com': {'password': 'hello'},
         'example@gmail.com': {'password': 'test'},
+        'tahiya': {'password': 'pass'},
 
 
         }

@@ -21,7 +21,7 @@ login_manager.init_app(app)
 @app.route('/')
 def index():
     #path = 'UI/Home/login_page.html'
-    return  render_template('login_page.html')  
+    return  flask.redirect('login')  
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -30,16 +30,6 @@ def login():
     # client-side form data. For example, WTForms is a library that will
     # handle this for us, and we use a custom LoginForm to validate.
 
-    """
-    if flask.request.method == 'GET':
-        return '''
-               <form action='login' method='POST'>
-                <input type='text' name='email' id='email' placeholder='email'/>
-                <input type='password' name='password' id='password' placeholder='password'/>
-                <input type='submit' name='submit'/>
-               </form>
-               '''
-   """
     if flask.request.method =='POST':
         print 'Test'
         email = flask.request.form['email']
@@ -60,7 +50,7 @@ def login():
             user = User()
             user.id = email
             flask_login.login_user(user)
-            return flask.redirect(flask.url_for('protected'))
+            return flask.redirect(flask.url_for('user_page'))
 
         return "Bad Login"
 
@@ -84,6 +74,46 @@ def protected():
     except:
         return 'Unauthorized access'
     return 'Logged in as: ' + flask_login.current_user.id
+
+
+@app.route('/user_page')
+def user_page():
+    """
+    try:
+        flask_login.current_user.id
+    except:
+        return 'Unauthorized access'
+    """
+    return render_template('user_page.html')
+
+
+
+
+@app.route('/predictions/<stock_name>', methods=['GET'])
+def predictions(stock_name):
+    
+    app_dir = os.path.dirname(os.path.realpath(__file__))
+    repo_dir = os.path.dirname(app_dir)
+    path = os.path.join(repo_dir,'predictor')
+
+    #stock_name = str(stock_name)
+    print stock_name
+    days = 5
+    current_price = 350
+
+    os.system('pythonw ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+    prediction_file = os.path.join(path,'predictions.json')
+
+    ## read the above prediction 
+    f = open(prediction_file,'r')
+    prediction_data = json.load(f)
+    f.close()
+    prediction_data['success'] = True
+
+
+    return flask.jsonify(prediction_data, )
+
+
 
 
 @login_manager.user_loader
@@ -140,7 +170,7 @@ def neural_predictor():
     days = 2
     current_price = 350
 
-    os.system('python' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+    os.system('python ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
     prediction_file = os.path.join(path,'predictions.json')
 
     ## read the above prediction 
