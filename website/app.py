@@ -101,17 +101,17 @@ def predictions(stock_name):
     days = 5
     current_price = 350
 
-    os.system('pythonw ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
+    #os.system('pythonw ' + path + '/predictor.py  %s %d %f' % (stock_name,days,current_price))
     prediction_file = os.path.join(path,'predictions.json')
 
     ## read the above prediction 
     f = open(prediction_file,'r')
     prediction_data = json.load(f)
     f.close()
-    prediction_data['success'] = True
+    prediction_image = utils.plot_predictions(prediction_data)
 
 
-    return flask.jsonify(prediction_data, )
+    return render_template('predictions.html',prediction_image=prediction_image)                                  #flask.jsonify(prediction_data)
 
 
 
