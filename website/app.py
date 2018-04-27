@@ -84,6 +84,9 @@ def user_page():
     except:
         return 'Unauthorized access'
     """
+    os.system('python historical_db_entry.py')
+    os.system('python realtime_entry.py')
+    print 'db is updated'
     return render_template('user_page.html')
 
 

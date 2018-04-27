@@ -1,1 +1,1 @@
-{"stock_name:": "FB", "predictions": [{"day": 1, "predicted_price": "382.221"}, {"day": 2, "predicted_price": "512.2746"}, {"day": 3, "predicted_price": "629.9659"}], "success": false, "recommendation": "HOLD"}
+{"stock_name:": "AABA", "predictions": [{"day": 1, "predicted_price": "94.077805"}, {"day": 2, "predicted_price": "104.99673"}, {"day": 3, "predicted_price": "113.02931"}], "success": false, "recommendation": "HOLD"}

@@ -4,7 +4,7 @@ import datetime as DT
 import time
 import csv
 import mysql.connector
-cnx = mysql.connector.connect(user='root',password='Anilraji95*',database='pp1_real_time')
+cnx = mysql.connector.connect(user='george',password='george',database='pp1_real_time')
 cursor = cnx.cursor()
 
 stock_names =['AMZN', 'PETX', 'AABA', 'AAPL', 'NVDA','TXN', 'NDAQ', 'GOOG', 'FB', 'GS']
