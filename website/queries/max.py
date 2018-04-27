@@ -1,12 +1,12 @@
 from __future__ import print_function
 import mysql.connector
-cnx = mysql.connector.connect(user='root', password='Anilraji95*', database='pp1_real_time')
+cnx = mysql.connector.connect(user='george', password='george', database='PP1_historical')
 cursor = cnx.cursor()
 
-def average(stock_name):
+def maximum(stock_name):
     find_average=("select max(close)"
                   "from (select*"
-                  "from pp1_historical.historical_"+stock_name+" order by date DESC LIMIT 10)as T;")
+                  "from PP1_historical.historical_"+stock_name+" order by date DESC LIMIT 10) as T;")
     cursor.execute(find_average)
     result = cursor.fetchall()
     for i in result:
@@ -15,8 +15,6 @@ def average(stock_name):
     cnx.commit()
     cursor.close()
     cnx.close()
-
-
 
 
 
