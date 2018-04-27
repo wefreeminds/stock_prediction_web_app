@@ -24,6 +24,7 @@ users = {
 
 def plot_predictions(data):
     import matplotlib.pyplot as plt
+    plt.switch_backend('agg')
 
 
 
@@ -44,7 +45,7 @@ def plot_predictions(data):
     plt.plot(x_axis,y_axis)
     plt.ylabel('Stock Price in  $')
     plt.grid(True)
-    fig.savefig('stock_predictions.png')
+    fig.savefig('static/stock_predictions.png')
 
    # plt.show()
     return 'stock_predictions.png'
